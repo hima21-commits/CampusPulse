@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Campus Pulse is a dark, static student feedback portal hosted with Amazon S3.">
+  <title>Campus Pulse | Student Feedback Portal</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav-shell" aria-label="Main navigation">
+      <a class="brand" href="#top"><span class="brand-mark">CP</span><span>Campus Pulse</span></a>
+      <div class="nav-actions"><button class="theme-toggle" id="theme-toggle" type="button" aria-pressed="false"><span class="theme-icon" aria-hidden="true">&#9788;</span><span id="theme-label">Light mode</span></button><a class="nav-link" href="#feedback-list">View feedback <span aria-hidden="true">&#8599;</span></a></div>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero" aria-labelledby="page-title">
+      <div class="hero-copy">
+        <p class="kicker">Student feedback portal / 001</p>
+        <h1>Make campus<br><em>better together.</em></h1>
+        <p class="hero-description">A focused feedback board for collecting quick ratings and thoughtful notes from the campus community. Built with browser-native tools and ready for Amazon S3.</p>
+        <a class="button button-dark" href="#give-feedback">Share feedback <span aria-hidden="true">&#8595;</span></a>
+      </div>
+      <div class="hero-stat" aria-label="Feedback summary">
+        <div class="stat-orbit"><span class="orbit-dot"></span><span class="orbit-dot"></span><span class="orbit-dot"></span></div>
+        <span class="stat-label">Current signal</span>
+        <strong id="hero-rating">0.0</strong>
+        <span class="stat-subtitle">average rating</span>
+        <div class="mini-stars" id="hero-stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      </div>
+    </section>
+
+    <section class="workspace" id="give-feedback" aria-labelledby="form-title">
+      <div class="section-heading"><p class="kicker">01 / Add a response</p><h2 id="form-title">What do you<br><em>really think?</em></h2></div>
+      <form class="feedback-form" id="feedback-form" novalidate>
+        <div class="form-row">
+          <label for="name">Your name<input id="name" name="name" type="text" placeholder="e.g. Aisha Khan" maxlength="60" required></label>
+          <label for="email">Email <span>(optional)</span><input id="email" name="email" type="email" placeholder="you@example.com" maxlength="120"></label>
+        </div>
+        <label for="subject">Subject<input id="subject" name="subject" type="text" placeholder="e.g. Library hours" maxlength="100" required></label>
+        <fieldset class="rating-field">
+          <legend>How would you rate your experience?</legend>
+          <div class="rating-options">
+            <label><input type="radio" name="rating" value="1" required><span>1</span><small>Poor</small></label>
+            <label><input type="radio" name="rating" value="2"><span>2</span><small>Fair</small></label>
+            <label><input type="radio" name="rating" value="3"><span>3</span><small>Good</small></label>
+            <label><input type="radio" name="rating" value="4"><span>4</span><small>Great</small></label>
+            <label><input type="radio" name="rating" value="5"><span>5</span><small>Excellent</small></label>
+          </div>
+        </fieldset>
+        <label for="comment">Your feedback<textarea id="comment" name="comment" rows="5" maxlength="500" placeholder="Tell us what worked, what did not, or what you would improve..." required></textarea></label>
+        <div class="form-footer"><span class="privacy-note">Your response stays in this browser.</span><button class="button button-accent" type="submit">Submit feedback <span aria-hidden="true">&#8594;</span></button></div>
+        <p class="form-message" id="form-message" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+
+    <section class="feedback-section" id="feedback-list" aria-labelledby="list-title">
+      <div class="list-header"><div><p class="kicker">02 / The response wall</p><h2 id="list-title">Recent <em>signals.</em></h2></div><div class="list-tools"><label class="filter-label" for="rating-filter">Filter <select id="rating-filter"><option value="all">All ratings</option><option value="5">5 stars</option><option value="4">4 stars</option><option value="3">3 stars</option><option value="2">2 stars</option><option value="1">1 star</option></select></label><span class="count-label" id="feedback-count">0 responses</span></div></div>
+      <div class="feedback-grid" id="feedback-grid" aria-live="polite"></div>
+      <div class="empty-state" id="empty-state"><span class="empty-mark">+</span><p>No feedback here yet.</p><small>Be the first person to share a signal.</small></div>
+    </section>
+  </main>
+
+  <footer class="footer"><span>Campus Pulse</span><span>Static, simple, useful.</span></footer>
+  <button class="back-to-top" id="back-to-top" type="button" aria-label="Back to top">&#8593;</button>
+</body>
+</html>
